@@ -1,0 +1,35 @@
+@layer components {
+  /* ========================================
+   1. BASE STYLES
+   ======================================== */
+
+  /* Badge tipo pill, contenido centrado y transiciones suaves. */
+  /* Compact pill badge with centered content and smooth hover-ready transitions. */
+  .badge {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-3 py-1 rounded-full;
+    @apply text-sm font-semibold whitespace-nowrap;
+    @apply transition-all duration-200 ease-in-out;
+    @apply leading-none;
+  }
+
+  /* ========================================
+   2. VARIANT STYLES
+   ======================================== */
+  .badge-solid {
+    @apply border-transparent;
+  }
+  .badge-outline {
+    @apply border border-current bg-transparent;
+  }
+  .badge-ghost {
+    @apply bg-transparent border-transparent;
+    /*Revisar lo del hover: hover:bg-opacity-10*/
+  }
+  .badge-soft {
+    @apply border-transparent;
+  }
+  .badge-dashed {
+    @apply border border-dashed border-current bg-transparent;
+  }
+}
