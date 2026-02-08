@@ -65,6 +65,12 @@ export const badgeVariants = cva(
         lg: 'badge--size-lg', // Grande (1rem)
         xl: 'badge--size-xl', // Extra grande (1.125rem)
       },
+
+      // dot: Muestra el badge como un indicador puntual/circular
+      dot: {
+        true: 'badge--dot', // Modo punto: redondo y compacto
+        false: '', // Modo normal
+      },
     },
 
     // 3️⃣ COMPOUND VARIANTS: Combina múltiples props para casos específicos

@@ -13,6 +13,7 @@ const props = withDefaults(defineProps<BadgeProps>(), {
   variant: 'solid',
   color: 'primary',
   size: 'md',
+  dot: false,
 });
 
 const badgeClass = computed(() =>
@@ -20,6 +21,7 @@ const badgeClass = computed(() =>
     variant: props.variant,
     color: props.color,
     size: props.size,
+    dot: props.dot,
   }),
 );
 </script>

@@ -26,4 +26,5 @@ export interface BadgeProps {
   variant?: BadgeVariant;
   color?: BadgeColor;
   size?: BadgeSize;
+  dot?: boolean;
 }

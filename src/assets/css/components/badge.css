@@ -359,4 +359,33 @@
   .badge--size-xl {
     @apply text-lg px-5 py-2.5;
   }
+  /* ========================================
+   9. DOT MODE
+   Transforms badge into a small circular indicator
+   ======================================== */
+
+  .badge--dot {
+    @apply w-2 h-2 p-0 rounded-full gap-0;
+  }
+
+  /* Size adjustments for dot mode */
+  .badge--dot.badge--size-xs {
+    @apply w-1.5 h-1.5;
+  }
+
+  .badge--dot.badge--size-sm {
+    @apply w-2 h-2;
+  }
+
+  .badge--dot.badge--size-md {
+    @apply w-2.5 h-2.5;
+  }
+
+  .badge--dot.badge--size-lg {
+    @apply w-3 h-3;
+  }
+
+  .badge--dot.badge--size-xl {
+    @apply w-3.5 h-3.5;
+  }
 }
