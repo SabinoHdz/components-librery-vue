@@ -19,7 +19,7 @@ export const BADGE_COLORS = [
 ] as const;
 export type BadgeColor = (typeof BADGE_COLORS)[number];
 
-export const BADGE_SIZES = ['sm', 'md', 'lg'] as const;
+export const BADGE_SIZES = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type BadgeSize = (typeof BADGE_SIZES)[number];
 
 export interface BadgeProps {

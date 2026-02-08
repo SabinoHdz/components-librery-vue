@@ -57,11 +57,13 @@ export const badgeVariants = cva(
         info: '',
       },
 
-      // size: Define el tamaño del badge
+      // size: Define el tamaño del badge (xs, sm, md, lg, xl)
       size: {
-        sm: 'text-xs px-2 py-0.5', // Pequeño
-        md: 'text-sm px-3 py-1', // Mediano (default)
-        lg: 'text-base px-4 py-2', // Grande
+        xs: 'badge--size-xs', // Extra pequeño (0.65rem)
+        sm: 'badge--size-sm', // Pequeño (0.75rem)
+        md: 'badge--size-md', // Mediano (0.875rem) - default
+        lg: 'badge--size-lg', // Grande (1rem)
+        xl: 'badge--size-xl', // Extra grande (1.125rem)
       },
     },
 

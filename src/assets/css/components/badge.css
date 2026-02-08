@@ -335,4 +335,28 @@
   .dark .badge-dashed--info {
     @apply border-info text-info;
   }
+
+  /* ========================================
+   8. SIZE STYLES
+   ======================================== */
+
+  .badge--size-xs {
+    @apply text-[0.65rem] px-2 py-0.5;
+  }
+
+  .badge--size-sm {
+    @apply text-xs px-2.5 py-1;
+  }
+
+  .badge--size-md {
+    @apply text-sm px-3 py-1.5;
+  }
+
+  .badge--size-lg {
+    @apply text-base px-4 py-2;
+  }
+
+  .badge--size-xl {
+    @apply text-lg px-5 py-2.5;
+  }
 }
