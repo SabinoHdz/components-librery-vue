@@ -1,6 +1,6 @@
 <template>
   <span :class="badgeClass">
-    <slot>Badge</slot>
+    <slot></slot>
   </span>
 </template>
 
