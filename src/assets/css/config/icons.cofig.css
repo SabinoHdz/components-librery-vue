@@ -1,0 +1,13 @@
+/**
+ * Material Symbols Icons
+ * Google's Material Design icon font with three style variants
+ */
+
+/* Material Symbols Outlined (Default) */
+@import url('material-symbols/outlined.css');
+
+/* Material Symbols Rounded */
+@import url('material-symbols/rounded.css');
+
+/* Material Symbols Sharp */
+@import url('material-symbols/sharp.css');

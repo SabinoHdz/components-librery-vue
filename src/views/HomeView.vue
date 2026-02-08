@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import VBadge from '@/components/ui/badge/VBadge.vue';
+import VIcon from '@/components/ui/icon/VIcon.vue';
 
 const router = useRouter();
 </script>
@@ -75,6 +76,28 @@ const router = useRouter();
             <VBadge variant="soft" color="success" size="xs">soft</VBadge>
             <VBadge variant="ghost" color="warning" size="xs">ghost</VBadge>
             <VBadge variant="dashed" color="error" size="xs">dashed</VBadge>
+          </div>
+        </button>
+
+        <button
+          @click="router.push({ name: 'icon' })"
+          class="p-6 rounded-lg bg-surface border border-border hover:border-primary transition-colors text-left group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold text-text-primary group-hover:text-primary transition">
+              Icon
+            </h3>
+            <VBadge color="primary" size="sm">Nuevo</VBadge>
+          </div>
+          <p class="text-sm text-text-secondary">
+            Material Symbols con múltiples familias, tamaños y estados.
+          </p>
+          <div class="flex flex-wrap gap-3 mt-4 items-center text-2xl">
+            <VIcon name="home" color="primary" />
+            <VIcon name="favorite" color="error" family="rounded" />
+            <VIcon name="star" color="warning" :filled="true" />
+            <VIcon name="settings" color="secondary" family="sharp" />
+            <VIcon name="check_circle" color="success" />
           </div>
         </button>
 
@@ -191,6 +214,74 @@ const router = useRouter();
           <div class="pt-4 border-t border-border">
             <button
               @click="router.push({ name: 'badge' })"
+              class="px-4 py-2 bg-primary text-white rounded-lg hover:opacity-90 transition font-medium"
+            >
+              Ver todos los ejemplos →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview rápido del Icon -->
+    <div class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 text-text-primary">Preview: Icon Component</h2>
+      <div class="p-6 rounded-lg bg-surface border border-border">
+        <div class="space-y-4">
+          <div>
+            <h4 class="text-sm font-semibold mb-2 text-text-secondary">Familias de Iconos</h4>
+            <div class="flex flex-wrap gap-4 items-center text-3xl">
+              <div class="text-center">
+                <VIcon name="favorite" family="outlined" color="error" />
+                <p class="text-xs text-text-secondary mt-1">Outlined</p>
+              </div>
+              <div class="text-center">
+                <VIcon name="favorite" family="rounded" color="error" />
+                <p class="text-xs text-text-secondary mt-1">Rounded</p>
+              </div>
+              <div class="text-center">
+                <VIcon name="favorite" family="sharp" color="error" />
+                <p class="text-xs text-text-secondary mt-1">Sharp</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold mb-2 text-text-secondary">Tamaños</h4>
+            <div class="flex flex-wrap gap-3 items-end">
+              <VIcon name="star" size="xs" color="warning" :filled="true" />
+              <VIcon name="star" size="sm" color="warning" :filled="true" />
+              <VIcon name="star" size="md" color="warning" :filled="true" />
+              <VIcon name="star" size="lg" color="warning" :filled="true" />
+              <VIcon name="star" size="xl" color="warning" :filled="true" />
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold mb-2 text-text-secondary">Colores</h4>
+            <div class="flex flex-wrap gap-3 items-center text-2xl">
+              <VIcon name="circle" color="primary" :filled="true" />
+              <VIcon name="circle" color="secondary" :filled="true" />
+              <VIcon name="circle" color="success" :filled="true" />
+              <VIcon name="circle" color="warning" :filled="true" />
+              <VIcon name="circle" color="error" :filled="true" />
+              <VIcon name="circle" color="info" :filled="true" />
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold mb-2 text-text-secondary">Estados Interactivos</h4>
+            <div class="flex flex-wrap gap-3 items-center text-2xl">
+              <VIcon name="thumb_up" color="primary" interactive />
+              <VIcon name="favorite" color="error" interactive />
+              <VIcon name="share" color="secondary" interactive />
+              <VIcon name="bookmark" color="warning" interactive />
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-border">
+            <button
+              @click="router.push({ name: 'icon' })"
               class="px-4 py-2 bg-primary text-white rounded-lg hover:opacity-90 transition font-medium"
             >
               Ver todos los ejemplos →
