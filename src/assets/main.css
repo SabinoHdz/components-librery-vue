@@ -1,6 +1,8 @@
+@import './css/config/icons.cofig.css';
 @import 'tailwindcss';
 
 @import './css/components/badge.css';
+@import './css/components/icon.css';
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
