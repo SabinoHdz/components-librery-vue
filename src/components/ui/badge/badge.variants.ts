@@ -15,8 +15,20 @@ import { cva } from 'class-variance-authority';
  * - Primer argumento: Clases base que SIEMPRE se aplican
  * - Segundo argumento: Objeto de configuración con:
  *   - variants: Define las posibles variantes y sus clases
- *   - compoundVariants: Combina múltiples variantes (ej: variant + color)
+ *   - compoundVariants: Combina múltiples variantes (refererencias a clases en CSS)
  *   - defaultVariants: Valores por defecto
+ *
+ * ARQUITECTURA HIBRIDA (Recomendada):
+ * - ESTILOS BASE (.badge) → Definidos en CSS
+ * - VARIANTES SIMPLES (.badge-solid, .badge-outline) → Definidas en CSS
+ * - COMPOUND VARIANTS (.badge-solid--primary) → Definidas en CSS (incluyendo dark mode)
+ * - CVA → Solo orquesta las clases (mantiene lógica limpia y legible)
+ *
+ * VENTAJAS:
+ * ✅ Separación de responsabilidades clara
+ * ✅ Dark mode centralizado en CSS (no duplicado)
+ * ✅ CVA limpio y enfocado en composición
+ * ✅ Fácil expandir: agregar nuevas clases en CSS sin cambiar CVA
  */
 export const badgeVariants = cva(
   // 1️⃣ CLASE BASE: Siempre se aplica, sin importar las props
@@ -55,61 +67,62 @@ export const badgeVariants = cva(
 
     // 3️⃣ COMPOUND VARIANTS: Combina múltiples props para casos específicos
     // Cuando variant='solid' Y color='primary', aplica estas clases
+    // Las clases están definidas en badge.css con soporte para dark mode
     compoundVariants: [
       // ========================================
       // SOLID VARIANTS (Fondo sólido + texto)
       // ========================================
-      { variant: 'solid', color: 'primary', class: 'bg-primary text-white' },
-      { variant: 'solid', color: 'secondary', class: 'bg-secondary text-white' },
-      { variant: 'solid', color: 'accent', class: 'bg-accent text-white' },
-      { variant: 'solid', color: 'success', class: 'bg-success text-white' },
-      { variant: 'solid', color: 'warning', class: 'bg-warning text-gray-900' }, // Texto oscuro para mejor contraste
-      { variant: 'solid', color: 'error', class: 'bg-error text-white' },
-      { variant: 'solid', color: 'info', class: 'bg-info text-gray-900' }, // Texto oscuro para mejor contraste
+      { variant: 'solid', color: 'primary', class: 'badge-solid--primary' },
+      { variant: 'solid', color: 'secondary', class: 'badge-solid--secondary' },
+      { variant: 'solid', color: 'accent', class: 'badge-solid--accent' },
+      { variant: 'solid', color: 'success', class: 'badge-solid--success' },
+      { variant: 'solid', color: 'warning', class: 'badge-solid--warning' },
+      { variant: 'solid', color: 'error', class: 'badge-solid--error' },
+      { variant: 'solid', color: 'info', class: 'badge-solid--info' },
 
       // ========================================
       // OUTLINE VARIANTS (Solo borde + texto)
       // ========================================
-      { variant: 'outline', color: 'primary', class: 'border-primary text-primary' },
-      { variant: 'outline', color: 'secondary', class: 'border-secondary text-secondary' },
-      { variant: 'outline', color: 'accent', class: 'border-accent text-accent' },
-      { variant: 'outline', color: 'success', class: 'border-success text-success' },
-      { variant: 'outline', color: 'warning', class: 'border-warning text-warning' },
-      { variant: 'outline', color: 'error', class: 'border-error text-error' },
-      { variant: 'outline', color: 'info', class: 'border-info text-info' },
+      { variant: 'outline', color: 'primary', class: 'badge-outline--primary' },
+      { variant: 'outline', color: 'secondary', class: 'badge-outline--secondary' },
+      { variant: 'outline', color: 'accent', class: 'badge-outline--accent' },
+      { variant: 'outline', color: 'success', class: 'badge-outline--success' },
+      { variant: 'outline', color: 'warning', class: 'badge-outline--warning' },
+      { variant: 'outline', color: 'error', class: 'badge-outline--error' },
+      { variant: 'outline', color: 'info', class: 'badge-outline--info' },
 
       // ========================================
       // SOFT VARIANTS (Fondo semi-transparente)
       // ========================================
-      { variant: 'soft', color: 'primary', class: 'bg-primary/10 text-primary' }, // /10 = 10% opacity
-      { variant: 'soft', color: 'secondary', class: 'bg-secondary/10 text-secondary' },
-      { variant: 'soft', color: 'accent', class: 'bg-accent/10 text-accent' },
-      { variant: 'soft', color: 'success', class: 'bg-success/10 text-success' },
-      { variant: 'soft', color: 'warning', class: 'bg-warning/10 text-warning' },
-      { variant: 'soft', color: 'error', class: 'bg-error/10 text-error' },
-      { variant: 'soft', color: 'info', class: 'bg-info/10 text-info' },
+      { variant: 'soft', color: 'primary', class: 'badge-soft--primary' },
+      { variant: 'soft', color: 'secondary', class: 'badge-soft--secondary' },
+      { variant: 'soft', color: 'accent', class: 'badge-soft--accent' },
+      { variant: 'soft', color: 'success', class: 'badge-soft--success' },
+      { variant: 'soft', color: 'warning', class: 'badge-soft--warning' },
+      { variant: 'soft', color: 'error', class: 'badge-soft--error' },
+      { variant: 'soft', color: 'info', class: 'badge-soft--info' },
 
       // ========================================
       // GHOST VARIANTS (Sin fondo, hover sutil)
       // ========================================
-      { variant: 'ghost', color: 'primary', class: 'text-primary hover:bg-primary/10' },
-      { variant: 'ghost', color: 'secondary', class: 'text-secondary hover:bg-secondary/10' },
-      { variant: 'ghost', color: 'accent', class: 'text-accent hover:bg-accent/10' },
-      { variant: 'ghost', color: 'success', class: 'text-success hover:bg-success/10' },
-      { variant: 'ghost', color: 'warning', class: 'text-warning hover:bg-warning/10' },
-      { variant: 'ghost', color: 'error', class: 'text-error hover:bg-error/10' },
-      { variant: 'ghost', color: 'info', class: 'text-info hover:bg-info/10' },
+      { variant: 'ghost', color: 'primary', class: 'badge-ghost--primary' },
+      { variant: 'ghost', color: 'secondary', class: 'badge-ghost--secondary' },
+      { variant: 'ghost', color: 'accent', class: 'badge-ghost--accent' },
+      { variant: 'ghost', color: 'success', class: 'badge-ghost--success' },
+      { variant: 'ghost', color: 'warning', class: 'badge-ghost--warning' },
+      { variant: 'ghost', color: 'error', class: 'badge-ghost--error' },
+      { variant: 'ghost', color: 'info', class: 'badge-ghost--info' },
 
       // ========================================
       // DASHED VARIANTS (Borde punteado)
       // ========================================
-      { variant: 'dashed', color: 'primary', class: 'border-primary text-primary' },
-      { variant: 'dashed', color: 'secondary', class: 'border-secondary text-secondary' },
-      { variant: 'dashed', color: 'accent', class: 'border-accent text-accent' },
-      { variant: 'dashed', color: 'success', class: 'border-success text-success' },
-      { variant: 'dashed', color: 'warning', class: 'border-warning text-warning' },
-      { variant: 'dashed', color: 'error', class: 'border-error text-error' },
-      { variant: 'dashed', color: 'info', class: 'border-info text-info' },
+      { variant: 'dashed', color: 'primary', class: 'badge-dashed--primary' },
+      { variant: 'dashed', color: 'secondary', class: 'badge-dashed--secondary' },
+      { variant: 'dashed', color: 'accent', class: 'badge-dashed--accent' },
+      { variant: 'dashed', color: 'success', class: 'badge-dashed--success' },
+      { variant: 'dashed', color: 'warning', class: 'badge-dashed--warning' },
+      { variant: 'dashed', color: 'error', class: 'badge-dashed--error' },
+      { variant: 'dashed', color: 'info', class: 'badge-dashed--info' },
     ],
 
     // 4️⃣ DEFAULT VARIANTS: Valores por defecto si no se pasa ninguna prop
@@ -125,11 +138,17 @@ export const badgeVariants = cva(
  * EJEMPLO DE USO:
  *
  * badgeVariants({ variant: 'solid', color: 'primary', size: 'md' })
- * // Retorna: "badge border-transparent text-sm px-3 py-1 bg-primary text-white"
+ * // Retorna: "badge badge-solid badge-solid--primary text-sm px-3 py-1"
  *
  * Clases aplicadas:
  * - 'badge' (base)
- * - 'border-transparent' (de variant: 'solid')
+ * - 'badge-solid' (de variant: 'solid')
+ * - 'badge-solid--primary' (de compoundVariant: solid + primary) [DEFINIDO EN CSS]
  * - 'text-sm px-3 py-1' (de size: 'md')
- * - 'bg-primary text-white' (de compoundVariant: solid + primary)
+ *
+ * VENTAJAS:
+ * ✅ CVA limpio y legible
+ * ✅ Estilos centralizados en CSS (badge.css)
+ * ✅ Dark mode manejado completamente en CSS
+ * ✅ Fácil escalar: solo agregar nuevos variant/color en CSS
  */
