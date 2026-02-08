@@ -247,6 +247,225 @@
       </div>
     </section>
 
+    <!-- Con Iconos -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 text-text-primary">Badges con Iconos</h2>
+      <div class="space-y-6">
+        <div class="p-6 rounded-lg bg-surface border border-border">
+          <h3 class="text-lg font-semibold mb-4 text-text-primary">Iconos a la Izquierda</h3>
+          <div class="flex flex-wrap gap-3">
+            <VBadge color="primary" icon-position="left">
+              <template #icon>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </template>
+              Completado
+            </VBadge>
+
+            <VBadge variant="soft" color="success" icon-position="left">
+              <template #icon>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </template>
+              Verificado
+            </VBadge>
+
+            <VBadge variant="outline" color="info" icon-position="left">
+              <template #icon>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </template>
+              Información
+            </VBadge>
+
+            <VBadge variant="soft" color="warning" icon-position="left">
+              <template #icon>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
+                </svg>
+              </template>
+              Advertencia
+            </VBadge>
+
+            <VBadge variant="soft" color="error" icon-position="left">
+              <template #icon>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </template>
+              Error
+            </VBadge>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-lg bg-surface border border-border">
+          <h3 class="text-lg font-semibold mb-4 text-text-primary">Iconos a la Derecha</h3>
+          <div class="flex flex-wrap gap-3">
+            <VBadge color="primary" icon-position="right">
+              <template #icon>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </template>
+              Siguiente
+            </VBadge>
+
+            <VBadge variant="outline" color="secondary" icon-position="right">
+              <template #icon>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </svg>
+              </template>
+              Link Externo
+            </VBadge>
+
+            <VBadge variant="soft" color="accent" icon-position="right">
+              <template #icon>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                  />
+                </svg>
+              </template>
+              Descargar
+            </VBadge>
+
+            <VBadge variant="ghost" color="info" icon-position="right">
+              <template #icon>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+              </template>
+              Agregar
+            </VBadge>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-lg bg-surface border border-border">
+          <h3 class="text-lg font-semibold mb-4 text-text-primary">
+            Con Diferentes Tamaños de Iconos
+          </h3>
+          <div class="flex flex-wrap gap-3 items-center">
+            <VBadge size="xs" color="primary">
+              <template #icon>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </template>
+              XS
+            </VBadge>
+
+            <VBadge size="sm" color="primary">
+              <template #icon>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </template>
+              SM
+            </VBadge>
+
+            <VBadge size="md" color="primary">
+              <template #icon>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </template>
+              MD
+            </VBadge>
+
+            <VBadge size="lg" color="primary">
+              <template #icon>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </template>
+              LG
+            </VBadge>
+
+            <VBadge size="xl" color="primary">
+              <template #icon>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </template>
+              XL
+            </VBadge>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Con Slots -->
     <section class="mb-16">
       <h2 class="text-2xl font-bold mb-6 text-text-primary">Composición con Slots</h2>
