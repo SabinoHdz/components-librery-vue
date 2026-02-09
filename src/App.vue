@@ -43,6 +43,10 @@ const { isDark, toggleTheme } = useTheme();
               >
                 About
               </RouterLink>
+
+              <router-link to="/button" :class="{ active: $route.path === '/button' }">
+                Button
+              </router-link>
             </div>
           </div>
 
