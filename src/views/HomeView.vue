@@ -2,6 +2,7 @@
 import { useRouter } from 'vue-router';
 import VBadge from '@/components/ui/badge/VBadge.vue';
 import VIcon from '@/components/ui/icon/VIcon.vue';
+import VButton from '@/components/ui/button/VButton.vue';
 
 const router = useRouter();
 </script>
@@ -101,11 +102,27 @@ const router = useRouter();
           </div>
         </button>
 
-        <!-- Placeholder para futuros componentes -->
-        <div class="p-6 rounded-lg bg-surface border border-border opacity-50">
-          <h3 class="text-lg font-semibold text-text-primary mb-2">Button</h3>
-          <p class="text-sm text-text-secondary">Próximamente...</p>
-        </div>
+        <button
+          @click="router.push({ name: 'button' })"
+          class="p-6 rounded-lg bg-surface border border-border hover:border-primary transition-colors text-left group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold text-text-primary group-hover:text-primary transition">
+              Button
+            </h3>
+            <VBadge color="primary" size="sm">Nuevo</VBadge>
+          </div>
+          <p class="text-sm text-text-secondary">
+            Botones versátiles con múltiples variantes, colores, tamaños y estilos.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <v-button variant="solid" color="primary" size="xs">solid</v-button>
+            <v-button variant="outline" color="secondary" size="xs">outline</v-button>
+            <v-button variant="soft" color="success" size="xs">soft</v-button>
+            <v-button variant="ghost" color="warning" size="xs">ghost</v-button>
+            <v-button variant="dashed" color="error" size="xs">dashed</v-button>
+          </div>
+        </button>
 
         <div class="p-6 rounded-lg bg-surface border border-border opacity-50">
           <h3 class="text-lg font-semibold text-text-primary mb-2">Card</h3>

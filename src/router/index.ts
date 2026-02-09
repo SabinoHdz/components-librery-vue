@@ -20,6 +20,12 @@ const router = createRouter({
       component: () => import('../views/IconView.vue'),
     },
     {
+      path: '/button',
+      name: 'button',
+      component: () => import('@/views/ButtonView.vue'),
+      meta: { title: 'Button' },
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
