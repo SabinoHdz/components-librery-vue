@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router';
 import VBadge from '@/components/ui/badge/VBadge.vue';
 import VIcon from '@/components/ui/icon/VIcon.vue';
 import VButton from '@/components/ui/button/VButton.vue';
+import VTooltip from '@/components/ui/tooltip/VTooltip.vue';
 
 const router = useRouter();
 </script>
@@ -121,6 +122,33 @@ const router = useRouter();
             <v-button variant="soft" color="success" size="xs">soft</v-button>
             <v-button variant="ghost" color="warning" size="xs">ghost</v-button>
             <v-button variant="dashed" color="error" size="xs">dashed</v-button>
+          </div>
+        </button>
+
+        <button
+          @click="router.push({ name: 'tooltip' })"
+          class="p-6 rounded-lg bg-surface border border-border hover:border-primary transition-colors text-left group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold text-text-primary group-hover:text-primary transition">
+              Tooltip
+            </h3>
+            <VBadge color="primary" size="sm">Nuevo</VBadge>
+          </div>
+          <p class="text-sm text-text-secondary">
+            Información contextual con posicionamiento inteligente, colores semánticos y
+            transiciones suaves.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <v-tooltip color="primary" size="xs" text="Preview">
+              <v-button variant="solid" color="primary" size="xs">solid</v-button>
+            </v-tooltip>
+            <v-tooltip color="secondary" size="xs" text="Preview">
+              <v-button variant="outline" color="secondary" size="xs">outline</v-button>
+            </v-tooltip>
+            <v-tooltip color="error" size="xs" text="Preview">
+              <v-button variant="soft" color="error" size="xs">soft</v-button>
+            </v-tooltip>
           </div>
         </button>
 

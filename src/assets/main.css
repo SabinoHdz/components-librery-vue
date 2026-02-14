@@ -4,6 +4,7 @@
 @import './css/components/badge.css';
 @import './css/components/icon.css';
 @import './css/components//button.css';
+@import './css/components/tooltip.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
 

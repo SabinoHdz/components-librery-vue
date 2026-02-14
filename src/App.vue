@@ -36,6 +36,18 @@ const { isDark, toggleTheme } = useTheme();
               >
                 Icon
               </RouterLink>
+
+              <router-link to="/button" :class="{ active: $route.path === '/button' }">
+                Button
+              </router-link>
+
+              <RouterLink
+                to="/tooltip"
+                class="text-text-secondary hover:text-text-primary transition font-medium"
+                active-class="text-primary"
+              >
+                Tooltip
+              </RouterLink>
               <RouterLink
                 to="/about"
                 class="text-text-secondary hover:text-text-primary transition font-medium"
@@ -43,10 +55,6 @@ const { isDark, toggleTheme } = useTheme();
               >
                 About
               </RouterLink>
-
-              <router-link to="/button" :class="{ active: $route.path === '/button' }">
-                Button
-              </router-link>
             </div>
           </div>
 
