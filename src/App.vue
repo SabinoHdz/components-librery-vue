@@ -56,6 +56,13 @@ const { isDark, toggleTheme } = useTheme();
                 Alert
               </RouterLink>
               <RouterLink
+                to="/card"
+                class="text-text-secondary hover:text-text-primary transition font-medium"
+                active-class="text-primary"
+              >
+                Card
+              </RouterLink>
+              <RouterLink
                 to="/about"
                 class="text-text-secondary hover:text-text-primary transition font-medium"
                 active-class="text-primary"

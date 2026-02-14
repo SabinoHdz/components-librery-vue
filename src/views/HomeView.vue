@@ -5,6 +5,7 @@ import VIcon from '@/components/ui/icon/VIcon.vue';
 import VButton from '@/components/ui/button/VButton.vue';
 import VTooltip from '@/components/ui/tooltip/VTooltip.vue';
 import VAlert from '@/components/ui/alert/VAlert.vue';
+import VCard from '@/components/ui/card/VCard.vue';
 
 const router = useRouter();
 </script>
@@ -191,10 +192,26 @@ const router = useRouter();
           </div>
         </button>
 
-        <div class="p-6 rounded-lg bg-surface border border-border opacity-50">
-          <h3 class="text-lg font-semibold text-text-primary mb-2">Card</h3>
-          <p class="text-sm text-text-secondary">Próximamente...</p>
-        </div>
+        <button
+          @click="router.push({ name: 'card' })"
+          class="p-6 rounded-lg bg-surface border border-border hover:border-primary transition-colors text-left group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold text-text-primary group-hover:text-primary transition">
+              Card
+            </h3>
+            <VBadge color="primary" size="sm">Nuevo</VBadge>
+          </div>
+          <p class="text-sm text-text-secondary">
+            Contenedores flexibles con variantes, layouts grid o flex y slots.
+          </p>
+          <div class="mt-4">
+            <v-card variant="soft" size="xs" class="gap-2">
+              <div class="text-xs text-text-secondary">Preview compacto</div>
+              <div class="h-6 rounded bg-surface"></div>
+            </v-card>
+          </div>
+        </button>
 
         <div class="p-6 rounded-lg bg-surface border border-border opacity-50">
           <h3 class="text-lg font-semibold text-text-primary mb-2">Input</h3>
