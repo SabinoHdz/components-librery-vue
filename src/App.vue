@@ -49,6 +49,13 @@ const { isDark, toggleTheme } = useTheme();
                 Tooltip
               </RouterLink>
               <RouterLink
+                to="/alert"
+                class="text-text-secondary hover:text-text-primary transition font-medium"
+                active-class="text-primary"
+              >
+                Alert
+              </RouterLink>
+              <RouterLink
                 to="/about"
                 class="text-text-secondary hover:text-text-primary transition font-medium"
                 active-class="text-primary"

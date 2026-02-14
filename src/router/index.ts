@@ -33,6 +33,12 @@ const router = createRouter({
       meta: { title: 'Tooltip' },
     },
     {
+      path: '/alert',
+      name: 'alert',
+      component: () => import('@/views/AlertView.vue'),
+      meta: { title: 'Alert' },
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
