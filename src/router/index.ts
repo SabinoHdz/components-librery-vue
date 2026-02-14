@@ -25,6 +25,13 @@ const router = createRouter({
       component: () => import('@/views/ButtonView.vue'),
       meta: { title: 'Button' },
     },
+    // Agregar a la lista de routes:
+    {
+      path: '/tooltip',
+      name: 'tooltip',
+      component: () => import('@/views/TooltipView.vue'),
+      meta: { title: 'Tooltip' },
+    },
     {
       path: '/about',
       name: 'about',
