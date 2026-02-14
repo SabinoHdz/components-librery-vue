@@ -4,6 +4,7 @@ import VBadge from '@/components/ui/badge/VBadge.vue';
 import VIcon from '@/components/ui/icon/VIcon.vue';
 import VButton from '@/components/ui/button/VButton.vue';
 import VTooltip from '@/components/ui/tooltip/VTooltip.vue';
+import VAlert from '@/components/ui/alert/VAlert.vue';
 
 const router = useRouter();
 </script>
@@ -149,6 +150,44 @@ const router = useRouter();
             <v-tooltip color="error" size="xs" text="Preview">
               <v-button variant="soft" color="error" size="xs">soft</v-button>
             </v-tooltip>
+          </div>
+        </button>
+
+        <button
+          @click="router.push({ name: 'alert' })"
+          class="p-6 rounded-lg bg-surface border border-border hover:border-primary transition-colors text-left group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold text-text-primary group-hover:text-primary transition">
+              Alert
+            </h3>
+            <VBadge color="primary" size="sm">Nuevo</VBadge>
+          </div>
+          <p class="text-sm text-text-secondary">
+            Mensajes informativos con iconos, acciones y múltiples estilos visuales.
+          </p>
+          <div class="flex flex-col gap-2 mt-4">
+            <v-alert
+              color="success"
+              variant="soft"
+              size="xs"
+              :icon="false"
+              message="Operación exitosa"
+            />
+            <v-alert
+              color="error"
+              variant="outline"
+              size="xs"
+              :icon="false"
+              message="Error encontrado"
+            />
+            <v-alert
+              color="info"
+              variant="bordered"
+              size="xs"
+              :icon="false"
+              message="Información disponible"
+            />
           </div>
         </button>
 
