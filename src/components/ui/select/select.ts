@@ -97,6 +97,6 @@ export interface SelectProps {
 // ========================================
 // 4. ERROR MESSAGE DEFAULTS
 // ========================================
-export const getDefaultRequiredMessage = (label: string): string => {
+const getDefaultRequiredMessage = (label: string): string => {
   return `El campo "${label}" es requerido`;
 };

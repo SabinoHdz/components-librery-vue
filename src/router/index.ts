@@ -75,6 +75,12 @@ const router = createRouter({
       meta: { title: 'Checkbox' },
     },
     {
+      path: '/toggle',
+      name: 'toggle',
+      component: () => import('@/views/ToggleView.vue'),
+      meta: { title: 'Toggle' },
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

@@ -140,9 +140,15 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { VIcon } from '../icon';
 import { VTooltip } from '../tooltip';
 import type { SelectOption, SelectProps } from './select';
-import { getDefaultRequiredMessage } from './select';
 import { selectVariants } from './select.variants';
 import { useFormContext, type ValidationRule } from '../form';
+
+/**
+ * Mensaje de validación por defecto para campos requeridos
+ */
+const getDefaultRequiredMessage = (label: string): string => {
+  return `El campo "${label}" es requerido`;
+};
 
 const props = withDefaults(defineProps<SelectProps>(), {
   placeholder: 'Seleccionar...',
