@@ -67,9 +67,9 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 
 const buttonClasses = computed(() =>
   buttonVariants({
-    variant: props.variant as unknown as ButtonVariant,
-    color: props.color as unknown as ButtonColor,
-    size: props.size as unknown as ButtonSize,
+    variant: props.variant as ButtonVariant,
+    color: props.color as ButtonColor,
+    size: props.size as ButtonSize,
     disabled: props.disabled,
     loading: props.loading,
     rounded: props.rounded,

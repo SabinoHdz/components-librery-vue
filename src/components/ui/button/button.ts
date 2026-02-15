@@ -18,14 +18,7 @@
  * - dashed: borde punteado
  */
 
-export const BUTTON_VARIANTS: string[] = [
-  'solid',
-  'outline',
-  'ghost',
-  'soft',
-  'dashed',
-  'link',
-] as const;
+export const BUTTON_VARIANTS = ['solid', 'outline', 'ghost', 'soft', 'dashed', 'link'] as const;
 
 export type ButtonVariant = (typeof BUTTON_VARIANTS)[number];
 
@@ -38,14 +31,7 @@ export type ButtonVariant = (typeof BUTTON_VARIANTS)[number];
  * Cada color mapea a variables CSS en main.css
  */
 
-export const BUTTON_COLORS: string[] = [
-  'primary',
-  'secondary',
-  'success',
-  'warning',
-  'error',
-  'info',
-];
+export const BUTTON_COLORS = ['primary', 'secondary', 'success', 'warning', 'error', 'info'] as const;
 export type ButtonColor = (typeof BUTTON_COLORS)[number];
 
 // ========================================
@@ -62,7 +48,7 @@ export type ButtonSize = (typeof BUTTON_SIZES)[number];
 // TIPOS HTML
 // ========================================
 
-export const BUTTON_TYPES = ['button', 'submit', 'reset'];
+export const BUTTON_TYPES = ['button', 'submit', 'reset'] as const;
 export type ButtonType = (typeof BUTTON_TYPES)[number];
 
 // ========================================

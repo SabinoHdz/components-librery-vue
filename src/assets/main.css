@@ -3,10 +3,11 @@
 
 @import './css/components/badge.css';
 @import './css/components/icon.css';
-@import './css/components//button.css';
+@import './css/components/button.css';
 @import './css/components/tooltip.css';
 @import './css/components/alert.css';
 @import './css/components/card.css';
+@import './css/components/input.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
 

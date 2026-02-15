@@ -63,6 +63,20 @@ const { isDark, toggleTheme } = useTheme();
                 Card
               </RouterLink>
               <RouterLink
+                to="/form"
+                class="text-text-secondary hover:text-text-primary transition font-medium"
+                active-class="text-primary"
+              >
+                Form
+              </RouterLink>
+              <RouterLink
+                to="/input"
+                class="text-text-secondary hover:text-text-primary transition font-medium"
+                active-class="text-primary"
+              >
+                Input
+              </RouterLink>
+              <RouterLink
                 to="/about"
                 class="text-text-secondary hover:text-text-primary transition font-medium"
                 active-class="text-primary"
