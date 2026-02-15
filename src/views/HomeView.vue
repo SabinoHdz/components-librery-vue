@@ -284,6 +284,32 @@ const router = useRouter();
             />
           </div>
         </button>
+
+        <button
+          @click="router.push({ name: 'radio' })"
+          class="p-6 rounded-lg bg-surface border border-border hover:border-primary transition-colors text-left group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold text-text-primary group-hover:text-primary transition">
+              Radio
+            </h3>
+            <VBadge color="primary" size="sm">Nuevo</VBadge>
+          </div>
+          <p class="text-sm text-text-secondary">
+            Radio buttons con 4 variantes, 7 colores y 5 tamaños. Totalmente customizable.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <V-Tooltip color="primary" size="xs" text="solid">
+              <VButton variant="solid" color="primary" size="xs">solid</VButton>
+            </V-Tooltip>
+            <V-Tooltip color="secondary" size="xs" text="outline">
+              <VButton variant="outline" color="secondary" size="xs">outline</VButton>
+            </V-Tooltip>
+            <V-Tooltip color="error" size="xs" text="soft">
+              <VButton variant="soft" color="error" size="xs">soft</VButton>
+            </V-Tooltip>
+          </div>
+        </button>
       </div>
     </div>
 

@@ -9,6 +9,7 @@
 @import './css/components/card.css';
 @import './css/components/input.css';
 @import './css/components/select.css';
+@import './css/components/radio.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
