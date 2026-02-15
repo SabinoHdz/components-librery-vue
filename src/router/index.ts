@@ -45,6 +45,18 @@ const router = createRouter({
       meta: { title: 'Card' },
     },
     {
+      path: '/form',
+      name: 'form',
+      component: () => import('@/views/FormView.vue'),
+      meta: { title: 'Form' },
+    },
+    {
+      path: '/input',
+      name: 'input',
+      component: () => import('@/views/InputView.vue'),
+      meta: { title: 'Input' },
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

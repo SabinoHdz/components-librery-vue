@@ -213,10 +213,53 @@ const router = useRouter();
           </div>
         </button>
 
-        <div class="p-6 rounded-lg bg-surface border border-border opacity-50">
-          <h3 class="text-lg font-semibold text-text-primary mb-2">Input</h3>
-          <p class="text-sm text-text-secondary">Próximamente...</p>
-        </div>
+        <button
+          @click="router.push({ name: 'form' })"
+          class="p-6 rounded-lg bg-surface border border-border hover:border-primary transition-colors text-left group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold text-text-primary group-hover:text-primary transition">
+              Form
+            </h3>
+            <VBadge color="primary" size="sm">Nuevo</VBadge>
+          </div>
+          <p class="text-sm text-text-secondary">
+            Validación de formularios con rules, control programático y eventos.
+          </p>
+          <div class="mt-4">
+            <v-alert
+              color="info"
+              variant="soft"
+              size="xs"
+              :icon="false"
+              message="Validación integrada"
+            />
+          </div>
+        </button>
+
+        <button
+          @click="router.push({ name: 'input' })"
+          class="p-6 rounded-lg bg-surface border border-border hover:border-primary transition-colors text-left group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold text-text-primary group-hover:text-primary transition">
+              Input
+            </h3>
+            <VBadge color="primary" size="sm">Nuevo</VBadge>
+          </div>
+          <p class="text-sm text-text-secondary">
+            Input versátil con 11 tipos, validación y máscaras personalizadas.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <v-alert
+              color="success"
+              variant="soft"
+              size="xs"
+              :icon="false"
+              message="Email, Decimal, Phone"
+            />
+          </div>
+        </button>
       </div>
     </div>
 
