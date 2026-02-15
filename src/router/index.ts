@@ -63,6 +63,12 @@ const router = createRouter({
       meta: { title: 'Select' },
     },
     {
+      path: '/radio',
+      name: 'radio',
+      component: () => import('@/views/RadioView.vue'),
+      meta: { title: 'Radio' },
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
