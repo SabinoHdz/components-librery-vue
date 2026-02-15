@@ -69,6 +69,12 @@ const router = createRouter({
       meta: { title: 'Radio' },
     },
     {
+      path: '/checkbox',
+      name: 'checkbox',
+      component: () => import('@/views/CheckboxView.vue'),
+      meta: { title: 'Checkbox' },
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
