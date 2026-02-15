@@ -8,6 +8,7 @@
 @import './css/components/alert.css';
 @import './css/components/card.css';
 @import './css/components/input.css';
+@import './css/components/select.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -104,6 +105,7 @@
   --color-text-primary: var(--color-text-primary);
   --color-text-secondary: var(--color-text-secondary);
   --color-text-disabled: var(--color-text-disabled);
+  --color-text-hint: var(--color-text-hint);
 
   /* Base colors (DaisyUI style) */
   --color-base-100: var(--color-base-100);

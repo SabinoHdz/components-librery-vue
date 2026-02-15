@@ -260,6 +260,30 @@ const router = useRouter();
             />
           </div>
         </button>
+
+        <button
+          @click="router.push({ name: 'select' })"
+          class="p-6 rounded-lg bg-surface border border-border hover:border-primary transition-colors text-left group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold text-text-primary group-hover:text-primary transition">
+              Select
+            </h3>
+            <VBadge color="primary" size="sm">Nuevo</VBadge>
+          </div>
+          <p class="text-sm text-text-secondary">
+            Select avanzado con search, multi-select y estilos tipo Quasar/DaisyUI.
+          </p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <v-alert
+              color="info"
+              variant="soft"
+              size="xs"
+              :icon="false"
+              message="options, required, chips"
+            />
+          </div>
+        </button>
       </div>
     </div>
 

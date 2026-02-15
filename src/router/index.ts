@@ -57,6 +57,12 @@ const router = createRouter({
       meta: { title: 'Input' },
     },
     {
+      path: '/select',
+      name: 'select',
+      component: () => import('@/views/SelectView.vue'),
+      meta: { title: 'Select' },
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
