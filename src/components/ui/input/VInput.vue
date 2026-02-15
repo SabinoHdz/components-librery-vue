@@ -271,6 +271,16 @@ const handleInput = (event: Event) => {
 
 const handleBlur = async () => {
   focused.value = false;
+  const currentValue = String(props.modelValue ?? '').trim();
+
+  // Si el usuario no escribio nada, no marcar touched ni validar
+  if (!dirty.value && !currentValue) {
+    touched.value = false;
+    errorMessage.value = '';
+    emit('blur');
+    return;
+  }
+
   touched.value = true;
 
   // Validar en blur
@@ -283,7 +293,9 @@ const handleBlur = async () => {
 
 const handleFocus = () => {
   focused.value = true;
-  errorMessage.value = ''; // Limpiar error al enfocar
+  if (!touched.value) {
+    errorMessage.value = ''; // Limpiar error solo si aun no se ha validado
+  }
   emit('focus');
 };
 
@@ -300,17 +312,24 @@ const togglePasswordVisibility = () => {
   showPassword.value = !showPassword.value;
 };
 
-const validateField = async (): Promise<boolean> => {
+const validateField = async (forceTouch = false): Promise<boolean> => {
   errorMessage.value = '';
   const value = props.modelValue ?? '';
+  const trimmedValue = String(value).trim();
 
   // Validar con rules
   for (const rule of effectiveRules.value) {
     const result = await rule(value);
     if (result !== true) {
+      if (forceTouch) touched.value = true;
       errorMessage.value = String(result) || 'Campo inválido';
       return false;
     }
+  }
+
+  // Si está vacío y no es requerido, no validar por tipo
+  if (!trimmedValue && !props.required) {
+    return true;
   }
 
   // Validar según tipo
@@ -324,10 +343,12 @@ const validateField = async (): Promise<boolean> => {
   });
 
   if (!isValidType) {
+    if (forceTouch) touched.value = true;
     errorMessage.value = getTypeErrorMessage(props.type);
     return false;
   }
 
+  if (forceTouch) touched.value = true;
   return true;
 };
 
@@ -359,7 +380,7 @@ onMounted(() => {
 
   if (formContext) {
     unregister = formContext.registerField({
-      validate: validateField,
+      validate: () => validateField(true),
       resetValidation,
       reset,
       focus: () => inputRef.value?.focus(),
@@ -373,7 +394,7 @@ onBeforeUnmount(() => {
 
 // ===== EXPOSE =====
 defineExpose({
-  validate: validateField,
+  validate: () => validateField(true),
   resetValidation,
   reset,
   focus: () => inputRef.value?.focus(),
