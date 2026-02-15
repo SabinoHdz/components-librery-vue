@@ -77,6 +77,13 @@ const { isDark, toggleTheme } = useTheme();
                 Input
               </RouterLink>
               <RouterLink
+                to="/select"
+                class="text-text-secondary hover:text-text-primary transition font-medium"
+                active-class="text-primary"
+              >
+                Select
+              </RouterLink>
+              <RouterLink
                 to="/about"
                 class="text-text-secondary hover:text-text-primary transition font-medium"
                 active-class="text-primary"
