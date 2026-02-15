@@ -10,6 +10,8 @@ export const inputVariants = cva('', {
       solid: 'input--solid',
       outline: 'input--outline',
       soft: 'input--soft',
+      borderless: 'input--borderless',
+      filled: 'input--filled',
     },
     color: {
       primary: 'input--primary',
@@ -35,6 +37,25 @@ export const inputVariants = cva('', {
       true: 'input--error-state',
       false: '',
     },
+    dense: {
+      true: 'input--dense',
+      false: '',
+    },
+    rounded: {
+      none: 'input--rounded-none',
+      sm: 'input--rounded-sm',
+      md: 'input--rounded-md',
+      lg: 'input--rounded-lg',
+      full: 'input--rounded-full',
+    },
+    shadow: {
+      true: 'input--shadow',
+      false: '',
+    },
+    loading: {
+      true: 'input--loading',
+      false: '',
+    },
   },
   defaultVariants: {
     variant: 'outline',
@@ -42,6 +63,10 @@ export const inputVariants = cva('', {
     size: 'md',
     disabled: false,
     error: false,
+    dense: false,
+    rounded: 'md',
+    shadow: false,
+    loading: false,
   },
 });
 

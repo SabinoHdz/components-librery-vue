@@ -2,8 +2,34 @@
   <div class="input-wrapper">
     <!-- Label -->
     <label v-if="label" class="input-label" :for="inputId">
-      {{ label }}
-      <span v-if="required" class="input-label-required">*</span>
+      <span class="inline-flex items-center gap-1.5">
+        {{ label }}
+
+        <!-- Tooltip informativo -->
+        <v-tooltip
+          v-if="labelTooltip"
+          :text="labelTooltip"
+          :placement="labelTooltipPlacement || 'top'"
+          color="neutral"
+          size="sm"
+          trigger="hover"
+          :max-width="250"
+        >
+          <v-icon
+            name="info"
+            size="xs"
+            class="text-text-secondary hover:text-text-primary transition-colors cursor-help"
+            aria-label="Más información"
+            role="button"
+            tabindex="0"
+            @keydown.enter.prevent
+            @keydown.space.prevent
+          />
+        </v-tooltip>
+
+        <span v-if="required" class="input-label-required">*</span>
+      </span>
+      <span v-if="loading" class="ml-2 text-xs text-text-secondary">(Cargando...)</span>
     </label>
 
     <!-- Input container -->
@@ -13,13 +39,16 @@
         <v-icon :name="prependIconName" size="sm" />
       </div>
 
+      <!-- Prefix text -->
+      <span v-if="prefix" class="input-prefix">{{ prefix }}</span>
+
       <!-- Input element -->
       <input
         :id="inputId"
         ref="inputRef"
         :value="getDisplayValue()"
         :placeholder="placeholder"
-        :disabled="disabled"
+        :disabled="disabled || loading"
         :readonly="readonly"
         :maxlength="maxlength"
         :minlength="minlength"
@@ -29,15 +58,22 @@
         :aria-label="ariaLabel || label"
         :aria-describedby="hasError ? errorId : ariaDescribedBy"
         :aria-invalid="hasError"
-        class="input-field"
+        :autofocus="autofocus"
+        :class="['input-field', inputClass]"
         @input="handleInput"
         @blur="handleBlur"
         @focus="handleFocus"
       />
 
+      <!-- Suffix text -->
+      <span v-if="suffix" class="input-suffix">{{ suffix }}</span>
+
+      <!-- Loading spinner -->
+      <div v-if="loading" class="input-loading-spinner"></div>
+
       <!-- Append icon (password eye toggle) -->
       <button
-        v-if="type === 'password'"
+        v-else-if="type === 'password'"
         type="button"
         class="input-append-btn"
         @click="togglePasswordVisibility"
@@ -48,7 +84,7 @@
 
       <!-- Clearable icon -->
       <button
-        v-if="clearable && modelValue && !disabled && !readonly"
+        v-else-if="clearable && modelValue && !disabled && !readonly && !loading"
         type="button"
         class="input-append-btn"
         @click="handleClear"
@@ -58,16 +94,33 @@
       </button>
     </div>
 
-    <!-- Error message -->
-    <div v-if="hasError && touched" :id="errorId" class="input-error" role="alert">
-      {{ errorMessage }}
+    <!-- Bottom row: Error / Hint / Counter -->
+    <div
+      v-if="hasError || hint || (counter && maxlength)"
+      class="flex justify-between gap-2 items-start"
+    >
+      <!-- Error message -->
+      <div v-if="hasError && touched" :id="errorId" class="input-error flex-1" role="alert">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Hint text -->
+      <div v-else-if="hint" class="input-hint flex-1">
+        {{ hint }}
+      </div>
+
+      <!-- Counter -->
+      <div v-if="counter && maxlength" class="input-counter">
+        {{ String(modelValue || '').length }} / {{ maxlength }}
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, onBeforeUnmount, watch } from 'vue';
+import { computed, ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import { VIcon } from '../icon';
+import { VTooltip } from '../tooltip';
 import type { InputProps } from './input';
 import { getDefaultRequiredMessage, getTypeErrorMessages } from './input';
 import { inputVariants } from './input.variants';
@@ -92,6 +145,13 @@ const props = withDefaults(defineProps<InputProps>(), {
   size: 'md',
   decimalPlaces: 2,
   integerDigits: 10,
+  dense: false,
+  loading: false,
+  counter: false,
+  autofocus: false,
+  shadow: false,
+  rounded: 'md',
+  labelTooltipPlacement: 'top',
 });
 
 const emit = defineEmits<{
@@ -157,8 +217,12 @@ const inputContainerClass = computed(() =>
     variant: props.variant,
     color: props.color,
     size: props.size,
-    disabled: props.disabled,
+    disabled: props.disabled || props.loading,
     error: hasError.value,
+    dense: props.dense,
+    rounded: props.rounded,
+    shadow: props.shadow,
+    loading: props.loading,
   }),
 );
 
@@ -286,6 +350,13 @@ const formContext = useFormContext();
 let unregister: (() => void) | null = null;
 
 onMounted(() => {
+  // Auto focus si está especificado
+  if (props.autofocus) {
+    nextTick(() => {
+      inputRef.value?.focus();
+    });
+  }
+
   if (formContext) {
     unregister = formContext.registerField({
       validate: validateField,

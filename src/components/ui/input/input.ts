@@ -3,6 +3,7 @@
  */
 
 import type { ValidationRule } from '../form';
+import type { TooltipPlacement } from '../tooltip';
 
 // ========================================
 // 1. INPUT TYPES
@@ -28,7 +29,7 @@ export type InputType = (typeof INPUT_TYPES)[number];
 export const INPUT_SIZES = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type InputSize = (typeof INPUT_SIZES)[number];
 
-export const INPUT_VARIANTS = ['solid', 'outline', 'soft'] as const;
+export const INPUT_VARIANTS = ['solid', 'outline', 'soft', 'borderless', 'filled'] as const;
 export type InputVariant = (typeof INPUT_VARIANTS)[number];
 
 export const INPUT_COLORS = [
@@ -41,6 +42,9 @@ export const INPUT_COLORS = [
   'info',
 ] as const;
 export type InputColor = (typeof INPUT_COLORS)[number];
+
+export const INPUT_ROUNDED = ['none', 'sm', 'md', 'lg', 'full'] as const;
+export type InputRounded = (typeof INPUT_ROUNDED)[number];
 
 // ========================================
 // 3. INTERFACE PROPS
@@ -82,6 +86,22 @@ export interface InputProps {
   size?: InputSize;
   prependIcon?: string;
   appendIcon?: string;
+
+  // Nuevas features inspiradas en Quasar/DaisyUI
+  hint?: string; // Texto de ayuda persistente
+  counter?: boolean; // Muestra contador de caracteres
+  dense?: boolean; // Modo compacto
+  loading?: boolean; // Estado de carga con spinner
+  prefix?: string; // Texto antes del input
+  suffix?: string; // Texto después del input (también sirve para unidades: kg, mts, °C, etc.)
+  rounded?: InputRounded; // Radio de borde (none, sm, md, lg, full)
+  autofocus?: boolean; // Auto focus al montar
+  inputClass?: string; // Clase adicional para el input
+  shadow?: boolean; // Agrega sombra al contenedor
+
+  // Tooltip informativo
+  labelTooltip?: string; // Texto del tooltip a mostrar junto al label
+  labelTooltipPlacement?: TooltipPlacement; // Posición del tooltip (default: 'top')
 
   // Accesibilidad
   ariaLabel?: string;

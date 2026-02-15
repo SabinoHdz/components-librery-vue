@@ -8,7 +8,7 @@
     <!-- SECTION 1: Input Types -->
     <section class="mb-12">
       <h2 class="text-2xl font-semibold mb-6 text-text-primary">Input Types</h2>
-      
+
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <!-- Text Inputs Card -->
         <v-card variant="outline">
@@ -134,7 +134,7 @@
     <!-- SECTION 2: Variants & Styles -->
     <section class="mb-12">
       <h2 class="text-2xl font-semibold mb-6 text-text-primary">Variants & Styles</h2>
-      
+
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <!-- Variants Card -->
         <v-card variant="outline">
@@ -261,7 +261,7 @@
     <!-- SECTION 3: States & Features -->
     <section class="mb-12">
       <h2 class="text-2xl font-semibold mb-6 text-text-primary">States & Features</h2>
-      
+
       <v-card variant="outline">
         <v-card-header>
           <template #title>Input States</template>
@@ -296,6 +296,418 @@
               label="With Icons"
               placeholder="Icons automatically added"
               prepend-icon="search"
+              clearable
+            />
+          </div>
+        </v-card-body>
+      </v-card>
+    </section>
+
+    <!-- SECTION 3.5: Nuevas Funcionalidades (Quasar/DaisyUI inspired) -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6 text-text-primary">✨ Nuevas Funcionalidades</h2>
+      <p class="text-text-secondary mb-6">Features adicionales inspiradas en Quasar y DaisyUI</p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Hint & Counter Card -->
+        <v-card variant="outline">
+          <v-card-header>
+            <template #title>💬 Hint & Counter</template>
+            <template #subtitle>Texto de ayuda y contador</template>
+          </v-card-header>
+          <v-card-body>
+            <div class="space-y-4">
+              <v-input
+                v-model="examples.withHint"
+                label="Con Hint"
+                hint="Este es un texto de ayuda persistente"
+                placeholder="Escribe algo..."
+                clearable
+              />
+              <v-input
+                v-model="examples.withCounter"
+                label="Con Counter"
+                :maxlength="50"
+                :counter="true"
+                placeholder="Máximo 50 caracteres"
+                clearable
+              />
+              <v-input
+                v-model="examples.hintAndCounter"
+                label="Hint + Counter"
+                hint="Combina ambas funcionalidades"
+                :maxlength="100"
+                :counter="true"
+                clearable
+              />
+            </div>
+          </v-card-body>
+        </v-card>
+
+        <!-- Prefix & Suffix Card -->
+        <v-card variant="outline">
+          <v-card-header>
+            <template #title>💲 Prefix & Suffix</template>
+            <template #subtitle>Texto antes y después</template>
+          </v-card-header>
+          <v-card-body>
+            <div class="space-y-4">
+              <v-input
+                v-model="examples.price"
+                type="decimal"
+                label="Precio"
+                prefix="$"
+                :decimal-places="2"
+                placeholder="0.00"
+                clearable
+              />
+              <v-input
+                v-model="examples.website"
+                label="Website"
+                prefix="https://"
+                suffix=".com"
+                placeholder="midominio"
+                clearable
+              />
+              <v-input
+                v-model="examples.percentage"
+                type="number"
+                label="Porcentaje"
+                suffix="%"
+                :min="0"
+                :max="100"
+                clearable
+              />
+            </div>
+          </v-card-body>
+        </v-card>
+
+        <!-- Dense & Loading Card -->
+        <v-card variant="outline">
+          <v-card-header>
+            <template #title>⚡ Dense & Loading</template>
+            <template #subtitle>Modo compacto y carga</template>
+          </v-card-header>
+          <v-card-body>
+            <div class="space-y-4">
+              <v-input
+                v-model="examples.dense"
+                label="Modo Dense"
+                placeholder="Input compacto"
+                :dense="true"
+                clearable
+              />
+              <v-input
+                v-model="examples.loadingInput"
+                label="Loading State"
+                placeholder="Validando..."
+                :loading="loadingState"
+                clearable
+              />
+              <v-button @click="toggleLoading" size="sm" variant="outline">
+                {{ loadingState ? 'Stop Loading' : 'Start Loading' }}
+              </v-button>
+            </div>
+          </v-card-body>
+        </v-card>
+
+        <!-- Nuevas Variantes Card -->
+        <v-card variant="outline">
+          <v-card-header>
+            <template #title>🎨 Nuevas Variantes</template>
+            <template #subtitle>Borderless y Filled</template>
+          </v-card-header>
+          <v-card-body>
+            <div class="space-y-4">
+              <v-input
+                v-model="examples.borderless"
+                variant="borderless"
+                label="Borderless"
+                placeholder="Sin bordes laterales"
+                clearable
+              />
+              <v-input
+                v-model="examples.filled"
+                variant="filled"
+                label="Filled (Material)"
+                placeholder="Estilo Material Design"
+                clearable
+              />
+            </div>
+          </v-card-body>
+        </v-card>
+      </div>
+
+      <!-- Rounded Variants Card (Full Width) -->
+      <v-card variant="outline" class="mt-6">
+        <v-card-header>
+          <template #title>⭕ Rounded Variants</template>
+          <template #subtitle>Diferentes radios de borde</template>
+        </v-card-header>
+        <v-card-body>
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <v-input
+              v-model="examples.roundedNone"
+              rounded="none"
+              label="None"
+              placeholder="Sin redondeo"
+              clearable
+            />
+            <v-input
+              v-model="examples.roundedSm"
+              rounded="sm"
+              label="Small"
+              placeholder="Pequeño"
+              clearable
+            />
+            <v-input
+              v-model="examples.roundedMd"
+              rounded="md"
+              label="Medium"
+              placeholder="Medio"
+              clearable
+            />
+            <v-input
+              v-model="examples.roundedLg"
+              rounded="lg"
+              label="Large"
+              placeholder="Grande"
+              clearable
+            />
+            <v-input
+              v-model="examples.roundedFull"
+              rounded="full"
+              label="Full"
+              placeholder="Pill"
+              clearable
+            />
+          </div>
+        </v-card-body>
+      </v-card>
+
+      <!-- Shadow & Combinations Card (Full Width) -->
+      <v-card variant="outline" class="mt-6">
+        <v-card-header>
+          <template #title>🌟 Shadow & Combinaciones</template>
+          <template #subtitle>Efectos y combinaciones de estilos</template>
+        </v-card-header>
+        <v-card-body>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <v-input
+              v-model="examples.shadow"
+              label="Con Shadow"
+              :shadow="true"
+              placeholder="Input elevado"
+              clearable
+            />
+            <v-input
+              v-model="examples.combo1"
+              label="Dense + Filled"
+              variant="filled"
+              :dense="true"
+              placeholder="Combinación"
+              clearable
+            />
+            <v-input
+              v-model="examples.combo2"
+              label="Shadow + Rounded Full"
+              rounded="full"
+              :shadow="true"
+              placeholder="Pill con sombra"
+              clearable
+            />
+          </div>
+        </v-card-body>
+      </v-card>
+    </section>
+
+    <!-- SECTION 3.6: Tooltip & Unidades -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold mb-6 text-text-primary">
+        💡 Tooltip Informativo & Unidades
+      </h2>
+      <p class="text-text-secondary mb-6">
+        Agrega información adicional con tooltip en el label. Las unidades de medida (kg, mts, etc.)
+        se manejan con el prop
+        <code class="text-xs px-1.5 py-0.5 bg-surface-variant rounded">suffix</code> existente.
+      </p>
+
+      <!-- Tooltip Examples Card -->
+      <v-card variant="outline" class="mb-6">
+        <v-card-header>
+          <template #title>ℹ️ Tooltip en Label</template>
+          <template #subtitle>Información adicional al pasar el mouse</template>
+        </v-card-header>
+        <v-card-body>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Tooltip Simple -->
+            <v-input
+              v-model="examples.tooltipSimple"
+              label="Peso Corporal"
+              label-tooltip="Ingrese su peso actual en kilogramos. Este valor se usa para calcular su IMC."
+              label-tooltip-placement="top"
+              type="decimal"
+              suffix="kg"
+              :decimal-places="1"
+              :min="1"
+              :max="500"
+              placeholder="75.5"
+              required
+              clearable
+            />
+
+            <!-- Tooltip con hint -->
+            <v-input
+              v-model="examples.tooltipWithHint"
+              label="Altura"
+              label-tooltip="Ingrese su estatura en metros. Ejemplo: 1.75 para una persona de 175 cm."
+              label-tooltip-placement="top"
+              type="decimal"
+              suffix="m"
+              :decimal-places="2"
+              :min="0.5"
+              :max="3"
+              placeholder="1.75"
+              hint="Valores típicos: 1.50 - 2.00 metros"
+              required
+              clearable
+            />
+
+            <!-- Tooltip con placement bottom -->
+            <v-input
+              v-model="examples.tooltipBottom"
+              label="Temperatura"
+              label-tooltip="Temperatura corporal en grados Celsius. La temperatura normal es 36.5-37°C."
+              label-tooltip-placement="bottom"
+              type="decimal"
+              suffix="°C"
+              :decimal-places="1"
+              :min="30"
+              :max="45"
+              placeholder="36.5"
+              clearable
+            />
+
+            <!-- Tooltip con counter -->
+            <v-input
+              v-model="examples.tooltipCounter"
+              label="Velocidad Máxima"
+              label-tooltip="Velocidad máxima de su vehículo en kilómetros por hora. Se usa para calcular límites de seguridad."
+              label-tooltip-placement="right"
+              type="number"
+              suffix="km/h"
+              :min="0"
+              :max="500"
+              :maxlength="3"
+              placeholder="120"
+              counter
+              hint="Límite legal: 120 km/h en autopista"
+              clearable
+            />
+          </div>
+        </v-card-body>
+      </v-card>
+
+      <!-- Units Examples Card -->
+      <v-card variant="outline">
+        <v-card-header>
+          <template #title>📏 Unidades de Medida (suffix)</template>
+          <template #subtitle>Usa suffix para mostrar unidades - kg, mts, °C, etc.</template>
+        </v-card-header>
+        <v-card-body>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Peso (kg) -->
+            <v-input
+              v-model="examples.unitWeight"
+              label="Peso"
+              label-tooltip="Peso en kilogramos"
+              type="decimal"
+              suffix="kg"
+              :decimal-places="1"
+              placeholder="75.5"
+              clearable
+            />
+
+            <!-- Distancia (mts) -->
+            <v-input
+              v-model="examples.unitDistance"
+              label="Distancia"
+              label-tooltip="Distancia en metros"
+              type="decimal"
+              suffix="mts"
+              :decimal-places="2"
+              placeholder="100.50"
+              clearable
+            />
+
+            <!-- Temperatura (°C) -->
+            <v-input
+              v-model="examples.unitTemp"
+              label="Temperatura"
+              label-tooltip="Temperatura en Celsius"
+              type="decimal"
+              suffix="°C"
+              :decimal-places="1"
+              placeholder="25.0"
+              clearable
+            />
+
+            <!-- Velocidad (km/h) -->
+            <v-input
+              v-model="examples.unitSpeed"
+              label="Velocidad"
+              label-tooltip="Velocidad en km/h"
+              type="number"
+              suffix="km/h"
+              placeholder="120"
+              clearable
+            />
+
+            <!-- Porcentaje (%) -->
+            <v-input
+              v-model="examples.unitPercent"
+              label="Descuento"
+              label-tooltip="Porcentaje de descuento"
+              type="number"
+              suffix="%"
+              :min="0"
+              :max="100"
+              placeholder="15"
+              clearable
+            />
+
+            <!-- Precio ($) - prefix -->
+            <v-input
+              v-model="examples.unitPrice"
+              label="Precio"
+              label-tooltip="Precio en dólares"
+              type="decimal"
+              prefix="$"
+              :decimal-places="2"
+              placeholder="99.99"
+              clearable
+            />
+
+            <!-- Tiempo (min) -->
+            <v-input
+              v-model="examples.unitTime"
+              label="Duración"
+              label-tooltip="Tiempo en minutos"
+              type="number"
+              suffix="min"
+              placeholder="30"
+              clearable
+            />
+
+            <!-- Volumen (L) -->
+            <v-input
+              v-model="examples.unitVolume"
+              label="Volumen"
+              label-tooltip="Capacidad en litros"
+              type="decimal"
+              suffix="L"
+              :decimal-places="2"
+              placeholder="2.50"
               clearable
             />
           </div>
@@ -339,14 +751,17 @@
                 />
               </div>
               <v-card-actions class="mt-6">
-                <v-button type="submit" color="primary" class="w-full">
-                  Iniciar Sesión
-                </v-button>
+                <v-button type="submit" color="primary" class="w-full"> Iniciar Sesión </v-button>
               </v-card-actions>
             </v-form>
-            <div v-if="loginForm.submitted" class="mt-4 p-4 bg-success/10 rounded-lg border border-success">
+            <div
+              v-if="loginForm.submitted"
+              class="mt-4 p-4 bg-success/10 rounded-lg border border-success"
+            >
               <p class="text-sm font-semibold text-success mb-2">✓ Login successful!</p>
-              <pre class="text-xs text-text-secondary">{{ JSON.stringify(loginForm, null, 2) }}</pre>
+              <pre class="text-xs text-text-secondary">{{
+                JSON.stringify(loginForm, null, 2)
+              }}</pre>
             </div>
           </v-card-body>
         </v-card>
@@ -403,17 +818,20 @@
                 />
               </div>
               <v-card-actions class="mt-6 gap-2">
-                <v-button type="submit" color="primary" class="flex-1">
-                  Registrarse
-                </v-button>
+                <v-button type="submit" color="primary" class="flex-1"> Registrarse </v-button>
                 <v-button type="button" variant="outline" @click="resetRegisterForm">
                   Reset
                 </v-button>
               </v-card-actions>
             </v-form>
-            <div v-if="registerForm.submitted" class="mt-4 p-4 bg-success/10 rounded-lg border border-success">
+            <div
+              v-if="registerForm.submitted"
+              class="mt-4 p-4 bg-success/10 rounded-lg border border-success"
+            >
               <p class="text-sm font-semibold text-success mb-2">✓ Registration successful!</p>
-              <pre class="text-xs text-text-secondary">{{ JSON.stringify(registerForm, null, 2) }}</pre>
+              <pre class="text-xs text-text-secondary">{{
+                JSON.stringify(registerForm, null, 2)
+              }}</pre>
             </div>
           </v-card-body>
         </v-card>
@@ -468,14 +886,17 @@
                 />
               </div>
               <v-card-actions class="mt-6">
-                <v-button type="submit" color="primary" class="w-full">
-                  Guardar Perfil
-                </v-button>
+                <v-button type="submit" color="primary" class="w-full"> Guardar Perfil </v-button>
               </v-card-actions>
             </v-form>
-            <div v-if="profileForm.submitted" class="mt-4 p-4 bg-success/10 rounded-lg border border-success">
+            <div
+              v-if="profileForm.submitted"
+              class="mt-4 p-4 bg-success/10 rounded-lg border border-success"
+            >
               <p class="text-sm font-semibold text-success mb-2">✓ Profile saved!</p>
-              <pre class="text-xs text-text-secondary">{{ JSON.stringify(profileForm, null, 2) }}</pre>
+              <pre class="text-xs text-text-secondary">{{
+                JSON.stringify(profileForm, null, 2)
+              }}</pre>
             </div>
           </v-card-body>
         </v-card>
@@ -522,14 +943,17 @@
                 />
               </div>
               <v-card-actions class="mt-6">
-                <v-button type="submit" color="primary" class="w-full">
-                  Enviar Mensaje
-                </v-button>
+                <v-button type="submit" color="primary" class="w-full"> Enviar Mensaje </v-button>
               </v-card-actions>
             </v-form>
-            <div v-if="contactForm.submitted" class="mt-4 p-4 bg-success/10 rounded-lg border border-success">
+            <div
+              v-if="contactForm.submitted"
+              class="mt-4 p-4 bg-success/10 rounded-lg border border-success"
+            >
               <p class="text-sm font-semibold text-success mb-2">✓ Message sent!</p>
-              <pre class="text-xs text-text-secondary">{{ JSON.stringify(contactForm, null, 2) }}</pre>
+              <pre class="text-xs text-text-secondary">{{
+                JSON.stringify(contactForm, null, 2)
+              }}</pre>
             </div>
           </v-card-body>
         </v-card>
@@ -606,9 +1030,14 @@
                 </v-button>
               </v-card-actions>
             </v-form>
-            <div v-if="configForm.submitted" class="mt-4 p-4 bg-success/10 rounded-lg border border-success">
+            <div
+              v-if="configForm.submitted"
+              class="mt-4 p-4 bg-success/10 rounded-lg border border-success"
+            >
               <p class="text-sm font-semibold text-success mb-2">✓ Configuration saved!</p>
-              <pre class="text-xs text-text-secondary">{{ JSON.stringify(configForm, null, 2) }}</pre>
+              <pre class="text-xs text-text-secondary">{{
+                JSON.stringify(configForm, null, 2)
+              }}</pre>
             </div>
           </v-card-body>
         </v-card>
@@ -663,7 +1092,45 @@ const examples = ref({
   readonlyText: 'This field is readonly',
   errorState: '',
   withIcons: '',
+  // Nuevas funcionalidades
+  withHint: '',
+  withCounter: '',
+  hintAndCounter: '',
+  price: '',
+  website: '',
+  percentage: '',
+  dense: '',
+  loadingInput: '',
+  borderless: '',
+  filled: '',
+  roundedNone: '',
+  roundedSm: '',
+  roundedMd: '',
+  roundedLg: '',
+  roundedFull: '',
+  shadow: '',
+  combo1: '',
+  combo2: '',
+  // Tooltip & Unidades
+  tooltipSimple: '',
+  tooltipWithHint: '',
+  tooltipBottom: '',
+  tooltipCounter: '',
+  unitWeight: '',
+  unitDistance: '',
+  unitTemp: '',
+  unitSpeed: '',
+  unitPercent: '',
+  unitPrice: '',
+  unitTime: '',
+  unitVolume: '',
 });
+
+// ===== LOADING STATE =====
+const loadingState = ref(false);
+const toggleLoading = () => {
+  loadingState.value = !loadingState.value;
+};
 
 // ===== VALIDATION RULES =====
 const minLengthRule = (min: number) => (val: string | number) => {
