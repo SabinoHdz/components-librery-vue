@@ -350,6 +350,27 @@ const router = useRouter();
             <VToggle label="Disabled" size="sm" />
           </div>
         </button>
+
+        <button
+          @click="router.push({ name: 'fab' })"
+          class="p-6 rounded-lg bg-surface border border-border hover:border-primary transition-colors text-left group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold text-text-primary group-hover:text-primary transition">
+              FAB
+            </h3>
+            <VBadge color="success" size="sm">Nuevo</VBadge>
+          </div>
+          <p class="text-sm text-text-secondary">
+            Floating Action Button con Speed Dial para acciones rápidas (redes sociales, scroll to
+            top).
+          </p>
+          <div class="flex gap-2 mt-4 items-center">
+            <VIcon name="add" color="primary" :filled="true" />
+            <VIcon name="share" color="info" />
+            <VIcon name="arrow_upward" color="success" />
+          </div>
+        </button>
       </div>
     </div>
 

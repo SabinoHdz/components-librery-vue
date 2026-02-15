@@ -12,6 +12,7 @@
 @import './css/components/radio.css';
 @import './css/components/checkbox.css';
 @import './css/components/toggle.css';
+@import './css/components/fab.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
 

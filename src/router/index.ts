@@ -75,6 +75,12 @@ const router = createRouter({
       meta: { title: 'Checkbox' },
     },
     {
+      path: '/fab',
+      name: 'fab',
+      component: () => import('@/views/FabView.vue'),
+      meta: { title: 'FAB / Speed Dial' },
+    },
+    {
       path: '/toggle',
       name: 'toggle',
       component: () => import('@/views/ToggleView.vue'),
