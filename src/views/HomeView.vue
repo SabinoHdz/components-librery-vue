@@ -7,6 +7,7 @@ import VTooltip from '@/components/ui/tooltip/VTooltip.vue';
 import VAlert from '@/components/ui/alert/VAlert.vue';
 import VCard from '@/components/ui/card/VCard.vue';
 import VCheckbox from '@/components/ui/checkbox/VCheckbox.vue';
+import VToggle from '@/components/ui/toggle/VToggle.vue';
 
 const router = useRouter();
 </script>
@@ -328,6 +329,25 @@ const router = useRouter();
           <div class="flex flex-col gap-2 mt-4">
             <VCheckbox :model-value="true" label="Checked" size="sm" />
             <VCheckbox label="Unchecked" size="sm" />
+          </div>
+        </button>
+
+        <button
+          @click="router.push({ name: 'toggle' })"
+          class="p-6 rounded-lg bg-surface border border-border hover:border-primary transition-colors text-left group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-lg font-semibold text-text-primary group-hover:text-primary transition">
+              Toggle
+            </h3>
+            <VBadge color="primary" size="sm">Nuevo</VBadge>
+          </div>
+          <p class="text-sm text-text-secondary">
+            Toggle switch con variantes, tamaños, posicionamiento de etiquetas e iconos.
+          </p>
+          <div class="flex flex-col gap-2 mt-4">
+            <VToggle :model-value="true" label="Enabled" size="sm" />
+            <VToggle label="Disabled" size="sm" />
           </div>
         </button>
       </div>
